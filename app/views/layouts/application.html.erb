@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tripfinder</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	
+
+<!-- Here goes the header image -->
+<img class="header-image" src="/assets/index.jpeg"><!--
+
+--><!-- Here goes the header menu --><!--
+--><div class="header-menu">
+  <ul>
+    <li><a href="/">Search</a>
+    <li><a>Chat with Ginnie</a>
+    <li><a>Explore</a>
+    <li><a>About</a>
+    <div class="login"><a>Log in</a></div>
+  </ul>
+</div>
+
+
+<!-- Here goes the page body  -->
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<div class="left-search-container">
+<form class="search-box" accept-charset="UTF-8" action="finder/find" method="post">
+  <label for="days">Number of days: </label> <input type="number" name="days" id="days" min="1" max="20" />
+  <label for="hours">Hours per day: </label> <input type="number" name="hours" id="hours" min="1" max="24"/>
+  <label for="cyclic">Cyclic route: </label> <input type="checkbox" name="cyclic" id="cyclic" /> 
+  <label for="location">Destination: </label> <input type="text" name="location" id="location" /> 
+  <input type="submit" id="submit" value="/" />
+</form>
+</div>
+
+<div class="routes-results"> 
+
+<% @routes.each do |route| %>
+  <div class="route">
+    <%= route.points.join(" > ") %>
+    <div class="route-data">
+      <span>Destination: <%= route.destination %></span>
+      <span>Altitude: <%= route.altitude %></span>
+      <span>Days: <%= route.length %></span>
+      <span>Avg. hours/day: <%= route.avg_hours %> </span>
+    </div>
+    <div class="route-description">
+      <span class="route-description-header">Description: </span>
+      <span><%= route.comments %></span>      
+    </div>
+  </div>
+<% end %>
+
+</div>
