@@ -10,12 +10,14 @@
 
 <div class="routes-results"> 
 
-<% @routes.each do |route| %>
+  <% @routes.each do |route| %>
+  <% logger.debug(@routes) %>
+  <% logger.debug(route)%>
   <div class="route">
-    <%= route.points.join(" > ") %>
+    <%= route.points.collect{|point| point.name}.join(" > ") %>
     <div class="route-data">
-      <span>Destination: <%= route.destination %></span>
-      <span>Altitude: <%= route.altitude %></span>
+      <% altitudes = route.points.collect{|point| point.altitude}%>
+      <span>Altitude: <%= [altitudes.min, altitudes.max].join(' - ') %></span>
       <span>Days: <%= route.length %></span>
       <span>Avg. hours/day: <%= route.avg_hours %> </span>
     </div>
