@@ -19,7 +19,12 @@
     <li><a>Chat with Ginnie</a>
     <li><a>Explore</a>
     <li><a>About</a>
-    <div class="login"><a>Log in</a></div>
+      <% if current_user %>
+        <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
+        <%= link_to "Logout", :logout, method: :post %>
+      <% else %>
+        <li class="login"><a href="<%= login_path %>">Log in</a>
+      <% end %>
   </ul>
 </div>
 

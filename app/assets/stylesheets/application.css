@@ -31,13 +31,17 @@ body {
   padding: 5px 10px 5px 10px;
 }
 
-.header-menu li:hover{
+.header-menu li:hover {
   background-color: #358938;
 }
 
 .header-menu li a {
   text-decoration: none;
   color: #fff;
+}
+
+.header-menu li a:hover {
+  background-color: #358938; 	
 }
 
 .header-menu .login {

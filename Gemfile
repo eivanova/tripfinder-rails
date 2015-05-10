@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
+# Authentication
+gem 'sorcery'
 
 # Tripfinder gem for the finder logic
 gem "tripfinder", git: "https://github.com/eivanova/tripfinder.git", branch: "master", ref: "HEAD"
