@@ -17,7 +17,7 @@
   <ul>
     <li><a href="/">Search</a>
     <li><a>Chat with Ginnie</a>
-    <li><a>Explore</a>
+    <li><a href="<%= groups_path %>">Explore</a>
     <li><a>About</a>
       <% if current_user %>
         <%= link_to "Edit Profile", edit_user_path(current_user.id) %>

@@ -1,17 +1,22 @@
 Rails.application.routes.draw do
 
+  # Home page
   root 'home#index'
+  get 'home/index'
   
+  # Authentication
   resources :user_sessions
   resources :users
 
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
   
-  get 'home/index'
-
+  # Finder
   post 'finder/find'
   get 'finder/find'
+
+  # Recommender
+  resources :groups
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
