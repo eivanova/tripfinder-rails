@@ -2,7 +2,7 @@
   <ul>
     <li><%= link_to 'Add new', new_group_path, :remote=>true  %>	
     <% @groups.each do |group| %>
-      <li><%= link_to group.name, group, :remote=>true %>
+    <li><%= link_to group.name, 'groups/' + group.id.to_s + '/routes', :remote=>true %>
     <%end%>	
   </ul>	  
 </div>

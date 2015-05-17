@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150516072816) do
+ActiveRecord::Schema.define(version: 20150517071634) do
+
+  create_table "grouped_routes", force: true do |t|
+    t.integer  "group_id"
+    t.text     "route"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "grouped_routes", ["group_id"], name: "index_grouped_routes_on_group_id"
 
   create_table "groups", force: true do |t|
     t.string   "name"

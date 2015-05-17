@@ -4,7 +4,6 @@ class CreateGroups < ActiveRecord::Migration
       t.string :name
       t.string :description
       t.string :user
-      t.text :routes
 
       t.timestamps
     end
