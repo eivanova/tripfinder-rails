@@ -10,4 +10,13 @@ class FinderController < ApplicationController
     finder = Finder.new network
     @routes = finder.find(parameter_map).keys 
   end
+
+  def groups_menu 
+    @groups  = Group.where user: current_user.email
+    @groups = [] if not @groups
+
+    respond_to do |format|
+      format.html { render :partial => 'groups_menu' }
+    end
+  end
 end

@@ -12,6 +12,7 @@
 
   <% @routes.each do |route| %>
   <div class="route">
+    <div class="json-route" style="display: none">route.to_json</div>
     <%= route.points.collect{|point| point.name}.join(" > ") %>
     <div class="route-data">
       <% altitudes = route.points.collect{|point| point.altitude}%>
@@ -23,9 +24,9 @@
       <div class="route-description-header">Description: </div>
       <div><%= route.comments %></div>  
     </div>
-    <div class="route-menu">
-    </div>
     <div class="routes-button">Add to group</div>
+    <div class="routes-menu">
+    </div>
   </div>
   <% end %>
 

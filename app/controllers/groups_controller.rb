@@ -9,7 +9,8 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       format.html 
-      format.json { render :partial => 'groups' }
+      # format.json { render :partial => 'groups' }
+      format.json { render :json => @groups.to_json }
     end 
   end
   

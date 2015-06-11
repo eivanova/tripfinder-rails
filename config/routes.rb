@@ -19,8 +19,10 @@ Rails.application.routes.draw do
   resources :groups
 
   get 'groups/:group/routes' => 'groups#show_routes'
-  post 'group/:group/routes' => 'groups#add_route'
-  delete 'group/:group/routes' => 'groups#delete_route'
+  post 'groups/:group/routes' => 'groups#add_route'
+  delete 'groups/:group/routes' => 'groups#delete_route'
+  
+  get 'finder/groups_menu'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
