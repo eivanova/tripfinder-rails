@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20150517071634) do
     t.string   "name"
     t.string   "description"
     t.string   "user"
-    t.text     "routes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

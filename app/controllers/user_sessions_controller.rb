@@ -1,11 +1,13 @@
 class UserSessionsController < ApplicationController
-  
-  # GET user_sessions/new	
+
+  skip_before_action :require_login
+
+  # GET user_sessions/new
   def new
-    @user = User.new	  
+    @user = User.new
   end
 
-  # POST user_sessions 
+  # POST user_sessions
   def create
     if @user = login(params[:email], params[:password])
       redirect_back_or_to(:root, notice: 'Login successful')
@@ -18,6 +20,6 @@ class UserSessionsController < ApplicationController
   # DELETE user_sessions/
   def destroy
     logout
-    redirect_to(:root, notice: 'Logged out!')	
+    redirect_to(:root, notice: 'Logged out!')
   end
 end

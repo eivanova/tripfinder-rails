@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+
+  skip_before_action :require_login, only: [:new, :create]
   before_action :set_user, only: [:edit, :update, :destroy]
 
   # GET /users/new
@@ -9,7 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-	logger.debug(@user.inspect)
+	  logger.debug(@user.inspect)
   end
 
   # POST /users

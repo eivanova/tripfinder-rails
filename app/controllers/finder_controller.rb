@@ -2,16 +2,18 @@ require 'tripfinder'
 
 class FinderController < ApplicationController
 
+  skip_before_action :require_login, except: [:groups_menu]
+
   def find
-    redirect_to '/'  if request.get? 	  
-    parameter_map = params.to_h.map{ |k, v| [k.to_sym, v] }.to_h	 
-    # TODO read about singleton classes in Rails 
-    network = Network.new	
+    redirect_to '/'  if request.get?
+    parameter_map = params.to_h.map{ |k, v| [k.to_sym, v] }.to_h
+    # TODO read about singleton classes in Rails
+    network = Network.new
     finder = Finder.new network
-    @routes = finder.find(parameter_map).keys 
+    @routes = finder.find(parameter_map).keys
   end
 
-  def groups_menu 
+  def groups_menu
     @groups  = Group.where user: current_user.email
     @groups = [] if not @groups
 
