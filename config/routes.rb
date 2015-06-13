@@ -3,14 +3,14 @@ Rails.application.routes.draw do
   # Home page
   root 'home#index'
   get 'home/index'
-  
+
   # Authentication
   resources :user_sessions
   resources :users
 
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
-  
+
   # Finder
   post 'finder/find'
   get 'finder/find'
@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   get 'groups/:group/routes' => 'groups#show_routes'
   post 'groups/:group/routes' => 'groups#add_route'
   delete 'groups/:group/routes' => 'groups#delete_route'
-  
-  get 'finder/groups_menu'
+
+  post 'finder/groups_menu'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

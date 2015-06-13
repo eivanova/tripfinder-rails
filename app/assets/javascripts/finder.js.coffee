@@ -2,16 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-ready = ->
+ready = () ->
   # On hover the "Add to group" button, show all groups
   $('.groups-button').hover(
-    (ev) -> $.get '/finder/groups_menu', {}, (html, response) ->
-      ev.currentTarget.nextElementSibling.innerHTML = html;
-      $('.select-group').change(
-        (checkEv) -> if checkEv.currentTarget.checked
-          add_grouped_route(checkEv.currentTarget.id.split('-')[1])
-      );
-      currentElement;
+    (ev) -> get_groups_menu(ev)
     (ev) -> null
    )
   # On hover out of the groups menu, hide the menu
@@ -20,9 +14,18 @@ ready = ->
     -> $(".groups-menu").html("")
    )
 
+get_groups_menu = (ev) ->
+  route_ser = $(ev.currentTarget).parents('.groups').children('.json-route')[0].innerHTML;
+  $.post '/finder/groups_menu', {route: route_ser }, (html, response) ->
+    ev.currentTarget.nextElementSibling.innerHTML = html;
+    $('.select-group').change(
+      (checkEv) -> if checkEv.currentTarget.checked
+        add_grouped_route(checkEv.currentTarget.id.split('-')[1])
+     );
+
 # Make request to the server to add this route the group
 add_grouped_route = (group_id) ->
-  route_ser = $('#group-' + group_id).parents('.route').children('.json-route')[0].innerHTML;
+  route_ser = $('#group-' + group_id).parents('.groups').children('.json-route')[0].innerHTML;
   $.post '/groups/' + group_id + '/routes', { route: route_ser }
 
 $(document).ready(ready)

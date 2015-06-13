@@ -2,7 +2,7 @@
   <div class="groups-list" style="max-height: 215px;">
     <% for group in @groups %>
       <li style="display: block;">
-        <input id="group-<%= group.id%>" class="select-group" type="checkbox"/>
+      <input id="group-<%= group.id %>" <%= "checked" if @route_groups.include? group.id  %> class="select-group" type="checkbox"/>
 	      <%= group.name %>
       </li>
     <%end%>
