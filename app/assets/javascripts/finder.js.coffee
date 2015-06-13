@@ -20,7 +20,7 @@ ready = ->
     -> $(".groups-menu").html("")
    )
 
-# Make request to the server to add this reoute the group
+# Make request to the server to add this route the group
 add_grouped_route = (group_id) ->
   route_ser = $('#group-' + group_id).parents('.route').children('.json-route')[0].innerHTML;
   $.post '/groups/' + group_id + '/routes', { route: route_ser }

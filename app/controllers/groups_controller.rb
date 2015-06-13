@@ -2,22 +2,21 @@ class GroupsController < ApplicationController
 
   before_filter :require_login
 
-  # GET	/groups(.:format) 
+  # GET	/groups(.:format)
   def index
     @groups = Group.where user: current_user.email
-    @groups = [] if not @groups   
+    @groups = [] if not @groups
 
     respond_to do |format|
-      format.html 
-      # format.json { render :partial => 'groups' }
+      format.html
       format.json { render :json => @groups.to_json }
-    end 
+    end
   end
-  
-  # GET    /groups/:id(.:format) 
+
+  # GET    /groups/:id(.:format)
   def show
-    @group = find_group(params[:id])  
- 
+    @group = find_group(params[:id])
+
     respond_to do |format|
       format.js { render :show_group }
     end
@@ -25,44 +24,44 @@ class GroupsController < ApplicationController
 
   # GET    /groups/new(.:format)
   def new
-    @group = Group.new	 
-    
+    @group = Group.new
+
     respond_to do |format|
       format.js { render :new_group }
     end
   end
-  
-  # GET    /groups/:id/edit(.:format) 
-  def edit
-    @group = find_group(params[:id])	  
-  end  
 
-  # POST   /groups(.:format) 
+  # GET    /groups/:id/edit(.:format)
+  def edit
+    @group = find_group(params[:id])
+  end
+
+  # POST   /groups(.:format)
   def create
     @group = Group.new(group_params)
- 
+
     if @group.save
       redirect_to groups_path
     else
       render 'new'
-    end    
+    end
   end
-  
-  # PUT    /groups/:id(.:format) 
-  # PATCH  /groups/:id(.:format)    
+
+  # PUT    /groups/:id(.:format)
+  # PATCH  /groups/:id(.:format)
   def update
     @group = find_group(params[:id])
-     
+
     if @group.update(group_params)
       redirect_to @group
     else
       render 'edit'
     end
   end
-  
-  # DELETE /groups/:id(.:format) 
+
+  # DELETE /groups/:id(.:format)
   def destroy
-    @group = find_group(params[:id]) 
+    @group = find_group(params[:id])
     @group.destroy
 
     redirect_to groups_path
@@ -71,8 +70,8 @@ class GroupsController < ApplicationController
   # GET /groups/:group/routes
   def show_routes
     params.require(:group)
-    @routes = GroupedRoute.find_by group: params[:group]    
-    
+    @routes = GroupedRoute.find_by group: params[:group]
+
     respond_to do |format|
       format.js { render :show_routes }
     end
@@ -80,13 +79,14 @@ class GroupsController < ApplicationController
 
   # POST /groups/:group/routes
   def add_route
-    params.require(:group, :route).permit(:group, :route)
-    return if not find_group(params[:group])
-    groupedRoute = GroupedRoute.new(params)
+    params.permit(:group, :route)
+    group = find_group(params[:group])
+    return if not group
+    groupedRoute = GroupedRoute.new({:group_id => params[:group], :route => params[:route]})
 
     if groupedRoute.save
       respond_to do |format|
-        format.js { render 'groups' }
+        format.json { render :json => groupedRoute.to_json }
       end
     end
   end
@@ -102,7 +102,7 @@ class GroupsController < ApplicationController
   end
 
   private
-  
+
   def group_params
     hash_params = params.require(:group).permit(:name, :description, :routes).to_h
     hash_params[:user] = current_user.email
@@ -110,7 +110,7 @@ class GroupsController < ApplicationController
   end
 
   def find_group(id)
-    group = Group.find(params[:id])
+    group = Group.find(id)
     group.user == current_user.email ? group : nil
   end
 end
