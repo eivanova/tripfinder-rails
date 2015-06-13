@@ -91,12 +91,13 @@ class GroupsController < ApplicationController
     end
   end
 
-  # DELETE /groups/:group/routes/:id
+  # DELETE /groups/:group/routes
   def delete_route
-    params.require(:group, :id)
+    params.require(:route)
     return if not find_group(params[:group])
-    groupedRoute = GroupedRoute.find(params[:id])
-    groupedRoute.destroy
+    grouped_route = GroupedRoute.where(group_id: params[:group], route: params[:route]).first
+    logger.info(grouped_route.inspect)
+    grouped_route.destroy
 
     redirect_to groups_path
   end
