@@ -2,17 +2,17 @@
 <form class="search-box" accept-charset="UTF-8" action="find" method="post">
   <label for="days">Number of days: </label> <input type="number" name="days" id="days" min="1" max="20" />
   <label for="hours">Hours per day: </label> <input type="number" name="hours" id="hours" min="1" max="18"/>
-  <label for="cyclic">Cyclic route: </label> <input type="checkbox" name="cyclic" id="cyclic" /> 
-  <label for="location">Destination: </label> <input type="text" name="location" id="location" /> 
+  <label for="cyclic">Cyclic route: </label> <input type="checkbox" name="cyclic" id="cyclic" />
+  <label for="location">Destination: </label> <input type="text" name="location" id="location" />
   <input type="submit" id="submit" value="Find" />
 </form>
 </div>
 
-<div class="routes-results"> 
+<div class="routes-results">
 
   <% @routes.each do |route| %>
   <div class="route">
-    <div class="json-route" style="display: none">route.to_json</div>
+    <div class="json-route" style="display: none"><%= route.to_json %></div>
     <%= route.points.collect{|point| point.name}.join(" > ") %>
     <div class="route-data">
       <% altitudes = route.points.collect{|point| point.altitude}%>
@@ -22,10 +22,11 @@
     </div>
     <div class="route-description">
       <div class="route-description-header">Description: </div>
-      <div><%= route.comments %></div>  
+      <div><%= route.comments %></div>
     </div>
-    <div class="routes-button">Add to group</div>
-    <div class="routes-menu">
+    <div class="groups">
+      <div class="groups-button">Add to group</div>
+      <div class="groups-menu"></div>
     </div>
   </div>
   <% end %>

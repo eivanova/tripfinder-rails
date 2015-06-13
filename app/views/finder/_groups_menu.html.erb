@@ -1,9 +1,9 @@
 <div class="route-button-menu" >
   <div class="groups-list" style="max-height: 215px;">
-    <% for group in @groups %>		
+    <% for group in @groups %>
       <li style="display: block;">
-      <input id="group-<%= group.id%>" class="select-group" type="checkbox" onclick="add_grouped_route(<%=group.id%>)"/>
-	<%= group.name %>
+        <input id="group-<%= group.id%>" class="select-group" type="checkbox"/>
+	      <%= group.name %>
       </li>
     <%end%>
    </ul>
