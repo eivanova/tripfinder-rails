@@ -15,14 +15,18 @@ Rails.application.routes.draw do
   post 'finder/find'
   get 'finder/find'
 
-  # Recommender
+  # Groups CRUD
   resources :groups
 
+  # Manage routes per group
   get 'groups/:group/routes' => 'grouped_route#show_routes'
   post 'groups/:group/routes' => 'grouped_route#add_route'
   delete 'groups/:group/routes' => 'grouped_route#delete_route'
 
   post 'finder/groups_menu'
+
+  # Recommender
+  get 'groups/:group/similar' => 'recommender#similar_to_group'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

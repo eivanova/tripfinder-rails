@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/eivanova/tripfinder.git
-  revision: fd0c0360d8e9826be346d9c7ff171a974bccbcd7
+  revision: 745ff6bbb0ca0f4b18c7cedccd572b5825087543
   ref: HEAD
   branch: master
   specs:
