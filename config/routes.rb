@@ -18,9 +18,9 @@ Rails.application.routes.draw do
   # Recommender
   resources :groups
 
-  get 'groups/:group/routes' => 'groups#show_routes'
-  post 'groups/:group/routes' => 'groups#add_route'
-  delete 'groups/:group/routes' => 'groups#delete_route'
+  get 'groups/:group/routes' => 'grouped_route#show_routes'
+  post 'groups/:group/routes' => 'grouped_route#add_route'
+  delete 'groups/:group/routes' => 'grouped_route#delete_route'
 
   post 'finder/groups_menu'
 
