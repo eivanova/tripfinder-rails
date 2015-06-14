@@ -70,7 +70,7 @@ class GroupsController < ApplicationController
   # GET /groups/:group/routes
   def show_routes
     params.require(:group)
-    @routes = GroupedRoute.find_by group: params[:group]
+    @routes = GroupedRoute.where(group: params[:group]).collect { |grouped_route| route_from_json(grouped_route.route) }
 
     respond_to do |format|
       format.js { render :show_routes }
@@ -82,7 +82,7 @@ class GroupsController < ApplicationController
     params.permit(:group, :route)
     group = find_group(params[:group])
     return if not group
-    groupedRoute = GroupedRoute.new({:group_id => params[:group], :route => params[:route]})
+    groupedRoute = GroupedRoute.new({:group_id => params[:group], :route => params[:route]} )
 
     if groupedRoute.save
       respond_to do |format|
@@ -114,4 +114,10 @@ class GroupsController < ApplicationController
     group = Group.find(id)
     group.user == current_user.email ? group : nil
   end
+
+  def route_from_json json
+    route_hash = ActiveSupport::JSON.decode json
+    RouteBuilder.build_from_hash route_hash
+  end
+
 end
