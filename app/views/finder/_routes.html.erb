@@ -1,23 +1,35 @@
 <div class="routes-results">
 
   <% @routes.each do |route| %>
-  <div class="route">
-    <%= route.points.collect{|point| point.name}.join(" > ") %>
-    <div class="route-data">
-      <% altitudes = route.points.collect{|point| point.altitude}%>
-      <div>Altitude: <%= [altitudes.min, altitudes.max].join(' - ') %></div>
-      <div>Days: <%= route.length %></div>
-      <div>Avg. hours/day: <%= route.avg_hours %> </div>
-    </div>
-    <div class="route-description">
-      <div class="route-description-header">Description: </div>
-        <div><%= route.comments %></div>
+    <div class="panel panel-default">
+      <div class="panel-heading clearfix">
+        <!-- Route summery as heading  -->
+        <%= route.points.collect{|point| point.name}.join(" > ") %>
+        <!-- Save to group button -->
+        <div class="dropdown pull-right groups-menu">
+          <div class="json-route" style="display: none"><%= route.to_json %></div>
+          <button class="btn btn-link dropdown-toggle groups-button" type="button" id="save-route-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Save
+            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="save-route-menu"></ul>
+        </div>
       </div>
-      <div class="groups">
-        <div class="json-route" style="display: none"><%= route.to_json %></div>
-        <div class="groups-button">Add to group</div>
-        <div class="groups-menu"></div>
+      <div class="panel-body">
+        <% altitudes = route.points.collect{|point| point.altitude}%>
+        <div>Altitude: <%= [altitudes.min, altitudes.max].join(' - ') %></div>
+        <div>Days: <%= route.length %></div>
+        <div>Avg. hours/day: <%= route.avg_hours %> </div>
+        <div role="button" data-toggle="collapse" href="#description-well" aria-expanded="false" aria-controls="description-well">
+          Description <span class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span>
+        </div>
+        <div class="collapse" id="description-well">
+          <div class="well">
+            <div><%= route.comments %></div>
+          </div>
+        </div>
       </div>
+
     </div>
   <% end %>
 

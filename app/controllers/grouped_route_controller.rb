@@ -26,7 +26,7 @@ class GroupedRouteController < ApplicationController
 
   # DELETE /groups/:group/routes
   def delete_route
-    params.require(:route)
+    params.permit(:group, :route)
     return if not find_group(params[:group])
     grouped_route = GroupedRoute.where(group_id: params[:group], route: params[:route]).first
     logger.info(grouped_route.inspect)

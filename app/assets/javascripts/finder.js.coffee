@@ -4,30 +4,22 @@
 
 ready = () ->
   # On hover the "Add to group" button, show all groups
-  $('.groups-button').hover(
-    (ev) -> get_groups_menu(ev)
-    (ev) -> null
-   )
-  # On hover out of the groups menu, hide the menu
-  $('.groups').hover(
-    -> null
-    -> $(".groups-menu").html("")
+  $('.groups-button').click( (ev) ->
+    get_groups_menu(ev)
    )
 
 # Request list of available groups menu
 get_groups_menu = (ev) ->
-  route_ser = $(ev.currentTarget).parents('.groups').children('.json-route')[0].innerHTML;
+  route_ser = $(ev.currentTarget).parents('.groups-menu').children('.json-route')[0].innerHTML;
   $.post '/finder/groups_menu', {route: route_ser }, (html, response) ->
     ev.currentTarget.nextElementSibling.innerHTML = html;
     # Add select handler, which will handle add/remove of the route from specific group
-    $('.select-group').change(
-      (checkEv) ->
-        group_id = checkEv.currentTarget.id.split('-')[1]
-        route_ser = $('#group-' + group_id).parents('.groups').children('.json-route')[0].innerHTML;
-        if checkEv.currentTarget.checked
-          add_grouped_route(group_id, route_ser)
-        else
-          remove_grouped_route(group_id, route_ser)
+    $('.group-menu-item a').click( (checkEv) ->
+      group_id = $(checkEv.currentTarget).attr("data-value");
+      if $(checkEv.currentTarget).children('input').attr("checked")
+        remove_grouped_route(group_id, route_ser)
+      else
+        add_grouped_route(group_id, route_ser)
      );
 
 # Make request to the server to add this route the group
@@ -36,8 +28,8 @@ add_grouped_route = (group_id, route_ser) ->
 
 remove_grouped_route = (group_id, route_ser) ->
   $.ajax
-    url: '/groups/' + group_id + '/routes',
-    data: { route: route_ser }
+    url: ('/groups/' + group_id + '/routes'),
+    data: { route: route_ser },
     type: 'DELETE'
 
 $(document).ready(ready)
