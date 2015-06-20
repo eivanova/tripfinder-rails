@@ -1,9 +1,9 @@
 <div class="left-search-container">
 <form class="search-box" accept-charset="UTF-8" action="find" method="post">
-  <label for="days">Number of days: </label> <input type="number" name="days" id="days" min="1" max="20" />
-  <label for="hours">Hours per day: </label> <input type="number" name="hours" id="hours" min="1" max="18"/>
-  <label for="cyclic">Cyclic route: </label> <input type="checkbox" name="cyclic" id="cyclic" />
-  <label for="location">Destination: </label> <input type="text" name="location" id="location" />
+<label for="days">Number of days: </label> <input type="number" name="days" value="<%= @parameters[:days] %>" id="days" min="1" max="20" />
+  <label for="hours">Hours per day: </label> <input type="number" name="hours" value="<%= @parameters[:hours] %>" id="hours" min="1" max="18"/>
+  <label for="cyclic">Cyclic route: </label> <input type="checkbox" name="cyclic" <%= "checked" if  @parameters[:cyclic] %> id="cyclic" />
+  <label for="location">Destination: </label> <input type="text" name="location" value="<%= @parameters[:location] %>" d="location" />
   <input type="submit" id="submit" value="Find" />
 </form>
 </div>
