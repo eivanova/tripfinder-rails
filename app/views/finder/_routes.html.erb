@@ -6,15 +6,17 @@
       <div class="panel-heading clearfix">
         <!-- Route summary as heading  -->
         <%= route.points.collect{|point| point.name}.join(" > ") %>
-        <!-- Save to group button -->
-        <div class="dropdown pull-right groups-menu">
-          <div class="json-route" style="display: none"><%= route.to_json %></div>
-          <button class="btn btn-link dropdown-toggle groups-button" type="button" id=<%= "save-route-menu" + i.to_s %> data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Save
-            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby=<%= "save-route-menu" + i.to_s %>></ul>
-        </div>
+        <!-- Save to group button: only if user is logged in -->
+        <% if current_user %>
+          <div class="dropdown pull-right groups-menu">
+            <div class="json-route" style="display: none"><%= route.to_json %></div>
+            <button class="btn btn-link dropdown-toggle groups-button" type="button" id=<%= "save-route-menu" + i.to_s %> data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Save
+              <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby=<%= "save-route-menu" + i.to_s %>></ul>
+          </div>
+        <% end %>
       </div>
       <div class="panel-body">
         <% altitudes = route.points.collect{|point| point.altitude}%>

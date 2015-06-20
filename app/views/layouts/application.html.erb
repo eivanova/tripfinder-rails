@@ -31,7 +31,9 @@
       <ul class="nav navbar-nav">
         <li><a href="/">Search</a></li>
         <li><a href="#">Chat with Ginnie</a></li>
-        <li><a href="<%= groups_path %>">Explore</a></li>
+        <% if current_user %>
+          <li><a href="<%= groups_path %>">Explore</a></li>
+        <% end %>
         <li><a href="#">About</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
