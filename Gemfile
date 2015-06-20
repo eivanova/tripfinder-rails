@@ -28,8 +28,13 @@ gem 'spring',        group: :development
 # Authentication
 gem 'sorcery'
 
+# Bootstrap
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+
 # Tripfinder gem for the finder logic
 gem "tripfinder", git: "https://github.com/eivanova/tripfinder.git", branch: "master", ref: "HEAD"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
