@@ -25,15 +25,21 @@ class GroupsController < ApplicationController
   # GET    /groups/new(.:format)
   def new
     @group = Group.new
+    @new = true
 
     respond_to do |format|
-      format.js { render :new_group }
+      format.js { render :group_details }
     end
   end
 
   # GET    /groups/:id/edit(.:format)
   def edit
     @group = find_group(params[:id])
+    @new = false
+
+    respond_to do |format|
+      format.js { render :group_details }
+    end
   end
 
   # POST   /groups(.:format)
@@ -61,10 +67,11 @@ class GroupsController < ApplicationController
 
   # DELETE /groups/:id(.:format)
   def destroy
+    GroupedRoute.destroy_all(group_id: params[:id])
     @group = find_group(params[:id])
     @group.destroy
 
-    redirect_to groups_path
+    redirect_to groups_path, action: 'index', status: 303
   end
 
   private

@@ -7,6 +7,7 @@ class RecommenderController < ApplicationController
 
     if not group_routes.empty?
       params = average_params(group_routes)
+      logger.info(params.inspect)
       # TODO learn about rails application service layer. Get rid of this duplicate code -> see FinderController#find
       network = Network.new
       finder = Finder.new network
@@ -30,8 +31,8 @@ class RecommenderController < ApplicationController
 
   def average_params routes
     params = {}
-    params[:days] = routes.collect { |route| route.days_count }.inject{ |sum, el| sum + el }.to_f / routes.size
-    params[:hours] = routes.collect { |route| route.avg_hours }.inject{ |sum, el| sum + el }.to_f / routes.size
+    params[:days] = (routes.collect { |route| route.days_count }.inject{ |sum, el| sum + el }.to_f / routes.size).ceil.to_i
+    params[:hours] = (routes.collect { |route| route.avg_hours }.inject{ |sum, el| sum + el }.to_f / routes.size).ceil.to_i
     params[:cyclic] = routes.collect { |route| route.cyclic? }.count(true) > routes.size
     params[:location] = routes.collect { |route| route.points }.flatten.collect { |point| point.region }.uniq
     params
