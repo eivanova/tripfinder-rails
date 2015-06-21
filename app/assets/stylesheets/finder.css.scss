@@ -2,24 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.left-search-container {
-  float: top;	
-  border: solid 1px;
-  border-radius: 10px;
-  margin: 20px 5px 20px 5px;
-}
-
-.search-box {
-}
-
-.route {
-  padding: 5px;
-  margin: 5px;
-  border: solid 1px;  
-}
-
 .route-data {
   display: block;
 }
 
+.form-inline {
+  padding: 10px;
+}
 
+.form-inline > * {
+  margin: 15px 10px !important;
+}

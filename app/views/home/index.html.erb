@@ -1,11 +1,39 @@
-<div class="search-box-container">
+<div class="container row col-md-4 col-md-offset-4">
 
-<form class="search-box" accept-charset="UTF-8" action="finder/find" method="post">
-  <label>Number of days: </label> <input type="number" name="days" min="1" max="20" /> <br/>
-  <label>Hours per day: </label> <input type="number" name="hours" min="1" max="24"/> <br/>
-  <label>Cyclic route: </label> <input type="checkbox" name="cyclic" /> <br/>
-  <label>Destination: </label> <input type="text" name="location" /> <br/>
-  <input type="submit" id="submit" value="Find" />
-</form>
+  <div class="page-header">
+    <h1>Find my trip!</h1>
+  </div>
+
+  <form class="form-horizontal" accept-charset="UTF-8" action="finder/find" method="post">
+    <div class="form-group">
+      <label for="days_num" class="col-sm-4 control-label">Number of days:</label>
+      <div class="col-sm-8">
+        <input name="days" type="number" class="form-control" id="days_num" min="1" max="20" placeholder="How long is your vacation?">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="avg_hours" class="col-sm-4 control-label">Hours per day:</label>
+      <div class="col-sm-8">
+        <input name="hours" type="number" class="form-control" id="avg_hours" min="1" max="20" placeholder="Be brave!">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="cyclic" class="col-sm-4 control-label">Cyclic route:</label>
+      <div class="col-sm-8">
+        <input name="cyclic" id="cyclic" class="form-control" checked type="checkbox">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="destination" class="col-sm-4 control-label">Destination:</label>
+      <div class="col-sm-8">
+        <input name="location" type="text" class="form-control" id="destination" placeholder="Do you have one?">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-4 col-sm-8">
+        <button type="submit" class="btn btn-default">Find</button>
+      </div>
+    </div>
+  </form>
 
 </div>
