@@ -6,12 +6,14 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    render 'details'
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-	  logger.debug(@user.inspect)
+	  @user = User.find(params[:id])
+    render :details
   end
 
   # POST /users
@@ -23,10 +25,7 @@ class UsersController < ApplicationController
 	    redirect_to :login
     else
       respond_to do |format|
-	#format.html { redirect_to @user, notice: 'User was successfully updated.'}
-	#format.json { render :login, status: :ok, location: @user }
-     # else
-        format.html { render :new }
+        format.html { render :details }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
