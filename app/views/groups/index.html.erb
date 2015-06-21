@@ -1,11 +1,17 @@
-<div class="groups-list-menu">
-  <ul>
-    <li><%= link_to 'Add new', new_group_path, :remote=>true  %>
+<div class="container row">
+  <ul class="list-group col-md-4">
+    <li class="list-group-item disabled">
+      Groups
+      <%= link_to raw("<span class=\"glyphicon glyphicon-plus\"></span> "), new_group_path, :remote=>true, class: "pull-right" %>
+    </li>
     <% @groups.each do |group| %>
-    <li><%= link_to group.name, 'groups/' + group.id.to_s + '/routes', :remote=>true %> <%= link_to "Simillar", 'groups/' + group.id.to_s + '/similar', :remote=>true %>
-    <%end%>
+      <li class="list-group-item">
+        <%= link_to group.name, 'groups/' + group.id.to_s + '/routes', :remote=>true %>
+        <%= link_to "Simillar", 'groups/' + group.id.to_s + '/similar', :remote=>true, class: "pull-right" %>
+      </li>
+    <% end %>
   </ul>
-</div>
-<div id="routes-per-group" class="routes-per-group">
+
+  <div id="routes-per-group" class="col-md-8"></div>
 
 </div>
