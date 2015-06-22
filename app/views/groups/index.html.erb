@@ -8,13 +8,13 @@
       <li class="list-group-item">
         <%= link_to group.name, 'groups/' + group.id.to_s + '/routes', :remote=>true %>
         <div class="dropdown pull-right">
-          <a class="btn btn-link dropdown-toggle" type="button" id="group-actions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <a href="#" class="dropdown-toggle" role="button"  id="group-actions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" aria-labelledby="group-actions">
-            <li><%= link_to "Simillar", 'groups/' + group.id.to_s + '/similar', :remote=>true %></li>
-            <li><%= link_to "Edit", edit_group_path(group), :remote=>true%></li>
-            <li><%= link_to "Delete", 'groups/' + group.id.to_s, :method=>:delete, :remote=>true %></li>
+            <li><%= link_to "Simillar", 'groups/' + group.id.to_s + '/similar', :remote=>true, class: "group-action" %></li>
+            <li><%= link_to "Edit", edit_group_path(group), :remote=>true, class: "group-action" %></li>
+            <li><%= link_to "Delete", 'groups/' + group.id.to_s, :method=>:delete, :remote=>true, class: "group-action" %></li>
           </ul>
         </div>
       </li>
