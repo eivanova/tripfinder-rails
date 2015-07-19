@@ -1,6 +1,6 @@
 <% for group in @groups %>
   <li class="group-menu-item" id="<%= group.id %>">
-    <a href="#" class="small" data-value="<%= group.id %>" tabIndex="-1">
+    <a href="#" class="small" data-remote="true" data-value="<%= group.id %>" tabIndex="-1">
       <input id="check-<%= group.id %>" <%= "checked" if @route_groups.include? group.id %> type="checkbox"/>
       <%= group.name %>
     </a>

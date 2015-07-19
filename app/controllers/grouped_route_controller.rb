@@ -32,7 +32,7 @@ class GroupedRouteController < ApplicationController
     logger.info(grouped_route.inspect)
     grouped_route.destroy
 
-    redirect_to groups_path
+    head :no_content
   end
 
   private

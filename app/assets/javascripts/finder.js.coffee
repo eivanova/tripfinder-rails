@@ -16,7 +16,12 @@ app.get_groups_menu = (ev) ->
     # Add select handler, which will handle add/remove of the route from specific group
     $('.group-menu-item a').click( (checkEv) ->
       group_id = $(checkEv.currentTarget).attr("data-value");
-      if $("#check-" + group_id).attr("checked")
+      to_remove = $("#check-" + group_id).prop("checked")
+      if checkEv.target.id == "check-" + group_id
+        to_remove = !to_remove
+        checkEv.stopPropagation()
+
+      if to_remove
         app.remove_grouped_route(group_id, route_ser)
       else
         app.add_grouped_route(group_id, route_ser)
@@ -25,12 +30,14 @@ app.get_groups_menu = (ev) ->
 # Make request to the server to add this route the group
 app.add_grouped_route = (group_id, route_ser) ->
   $.post '/groups/' + group_id + '/routes', { route: route_ser }
+  $("#check-" + group_id).prop("checked", true);
 
 app.remove_grouped_route = (group_id, route_ser) ->
   $.ajax
     url: ('/groups/' + group_id + '/routes'),
     data: { route: route_ser },
     type: 'DELETE'
+  $("#check-" + group_id).prop("checked", false);
 
 $(document).ready(app.ready)
 $(document).on('page:load', app.ready)

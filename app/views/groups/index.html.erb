@@ -12,7 +12,7 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" aria-labelledby="group-actions">
-            <li><%= link_to "Simillar", 'groups/' + group.id.to_s + '/similar', :remote=>true, class: "group-action" %></li>
+            <li><%= link_to "Simillar", 'groups/' + group.id.to_s + '/similar', :remote=>true, class: "group-action", :id=>"similar-group-action" %></li>
             <li><%= link_to "Edit", edit_group_path(group), :remote=>true, class: "group-action" %></li>
             <li><%= link_to "Delete", 'groups/' + group.id.to_s, :method=>:delete, :remote=>true, class: "group-action" %></li>
           </ul>
