@@ -24,7 +24,7 @@
             <% altitudes = route.points.collect{|point| point.altitude}%>
             <label class="col-sm-2 control-label">Altitude:</label>
             <div class="col-sm-10">
-              <p class="form-control-static"> <%= [altitudes.min, altitudes.max].join(' - ') %></p>
+              <p class="form-control-static"> <%= [altitudes.min, altitudes.max].join('m - ') %>m</p>
             </div>
             <label class="col-sm-2 control-label">Days:</label>
             <div class="col-sm-10">
@@ -32,7 +32,8 @@
             </div>
             <label class="col-sm-2 control-label">Hours per day:</label>
             <div class="col-sm-10">
-              <p class="form-control-static"> <%= route.avg_hours %></p>
+              <% hours = route.avg_hours %>
+              <p class="form-control-static"> <%= hours.floor %>h <%= ((hours - hours.floor) * 60).floor  %>min</p>
             </div>
           </div>
         </form>
