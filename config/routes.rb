@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
   # Chat bot
   get 'chatter_bot/chat'
-  get 'chatter_bot/reply'
+  post 'chatter_bot/reply'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

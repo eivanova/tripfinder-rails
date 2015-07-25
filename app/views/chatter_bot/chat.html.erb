@@ -1,2 +1,12 @@
-<h1>ChatterBot#chat</h1>
-<p>Find me in app/views/chatter_bot/chat.html.erb</p>
+<h1>Chat with Ginnie</h1>
+<div class="row">
+  <div class="col-sm-4">
+    <img src="/assets/ginnie.gif">
+  </div>
+  <div class="bottom-align col-sm-8">
+    <div id="messages">
+      <div class="gin-message"><%= @reply %> </div>
+    </div>
+    <textarea id="chat-input" cols="100" rows="2" ></textarea>
+  </div>
+</div>
