@@ -8,7 +8,7 @@ require 'tripfinder'
 Bundler.require(*Rails.groups)
 dataset_points = File.expand_path("../../datasets/points.txt", __FILE__)
 dataset_routes = File.expand_path("../../datasets/routes.txt", __FILE__)
-Tripfinder.configure({:points => dataset_points, :routes => dataset_routes})   
+Tripfinder.configure({:points => dataset_points, :routes => dataset_routes})
 
 module TripfinderRails
   class Application < Rails::Application
