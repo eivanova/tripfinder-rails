@@ -1,5 +1,8 @@
 class RecommenderController < ApplicationController
 
+  @@network = Network.new
+  @@finder = Finder.new @@network
+
   # GET /groups/:group/similar
   def similar_to_group
     # Do pseudo-recommendation. Average the parameters of the routes in the given group and run a search for these parameters.
@@ -8,13 +11,12 @@ class RecommenderController < ApplicationController
     if not group_routes.empty?
       params = average_params(group_routes)
       logger.info(params.inspect)
-      # TODO learn about rails application service layer. Get rid of this duplicate code -> see FinderController#find
-      network = Network.new
-      finder = Finder.new network
-      @routes = finder.find(params).keys
+      @routes = @@finder.find(params).keys
     else
       @routes = []
     end
+
+    @routes = @routes - group_routes
 
     respond_to do |format|
     format.js { render  "/grouped_route/show_routes" }
