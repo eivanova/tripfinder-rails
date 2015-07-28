@@ -12,6 +12,17 @@
     <input name="cyclic" <%= "checked" if @parameters[:cyclic] %> id="cyclic" class="form-control" type="checkbox">
   </div>
   <div class="form-group">
+    <label for="difficulty" >Difficulty:</label>
+    <select name="difficulty" id="difficulty" class="form-control">
+      <option value="">Any</option>
+      <option value="1" <%= "selected" if @parameters[:difficulty] == "1" %> > 1 </option>
+      <option value="3" <%= "selected" if @parameters[:difficulty] == "3" %> > 2 </option>
+      <option value="6" <%= "selected" if @parameters[:difficulty] == "6" %> > 3 </option>
+      <option value="8" <%= "selected" if @parameters[:difficulty] == "8" %> > 4 </option>
+      <option value="10" <%= "selected" if @parameters[:difficulty] == "10" %> > 5 </option>
+    </select>
+  </div>
+  <div class="form-group">
     <label for="destination">Destination:</label>
     <input name="location" value="<%= @parameters[:location]  %>" type="text" class="form-control" id="destination" placeholder="Do you have one?">
   </div>
