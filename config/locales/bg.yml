@@ -1,0 +1,93 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+bg:
+  home:
+    index:
+      title: "Намери пътуване за мен!"
+      days: "Брой дни: "
+      hours: "Часове на ден: "
+      cyclic: "Цикличен маршрут: "
+      difficulty: "Трудност: "
+      days_placeholder: "Дължина на ваканцията"
+      hours_placeholder: "Дължина на деня"
+      destination: "Дестинация: "
+      destination_placeholder: "Къде искаш да отидеш?"
+      any: "Без значение"
+      find: "Търси"
+  finder:
+    routes:
+      altitude: "Надморска височина: "
+      days: "Брой дни: "
+      hours: "Часове на ден: "
+      save: "Запази"
+      description: "Описание"
+      altitude_message: "%{min}м - %{max}м"
+      hours_message: "%{hours}ч %{min}мин"
+    find:
+      days: "Брой дни: "
+      hours: "Часове на ден: "
+      cyclic: "Цикличен маршрут: "
+      difficulty: "Трудност: "
+      days_placeholder: "Дължина на ваканцията"
+      hours_placeholder: "Дължина на деня"
+      destination: "Дестинация: "
+      destination_placeholder: "Къде искаш да отидеш?"
+      find: "Търси"
+      any: "Без значение"
+  groups:
+    group_details:
+      create: "Създай нова група"
+      edit: "Промяна на група %{name}"
+      name: "Име: "
+      description: "Описание: "
+      save: "Запази"
+    index:
+      groups: "Групи"
+      similar: "Подобни маршрути"
+      edit: "Промяна"
+      delete: "Изтриване"
+  layouts:
+    application:
+      search: "Търсене"
+      chat: "Разговор с Джини"
+      explore: "Изследовател"
+      about: "За мен"
+      details: "Детайли"
+      logout: "Логоут"
+      login: "Логин"
+  user_sessions:
+    new:
+      login: "Логин"
+      email: "Имейл адрес:"
+      password: "Парола: "
+      register: "Регистриране"
+  users:
+    details:
+      details: "детайли"
+      register: "Регистриране"
+      error: "Неуспешно запазване на потребителя"
+      email: "Имейл адрес: "
+      password: "Парола: "
+      confirm: "Потвърди паролата: "
+      login: "Логин"
+    show:
+      edit: "Промяна на детайлите"

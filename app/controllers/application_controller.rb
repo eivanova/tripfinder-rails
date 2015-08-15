@@ -6,6 +6,13 @@ class ApplicationController < ActionController::Base
 
   before_filter :require_login
 
+  before_action :set_locale
+
+  def set_locale
+    logger.error params[:locale]
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+
   private
 
   def not_authenticated

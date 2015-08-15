@@ -11,7 +11,7 @@
           <div class="dropdown pull-right groups-menu">
             <div class="json-route" style="display: none"><%= route.to_json %></div>
             <button class="btn btn-link dropdown-toggle groups-button" type="button" id=<%= "save-route-menu" + i.to_s %> data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              Save
+              <%= t '.save' %>
               <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby=<%= "save-route-menu" + i.to_s %>></ul>
@@ -21,25 +21,25 @@
       <div class="panel-body">
         <form class="form-horizontal route-data">
           <div class="form-group">
-            <% altitudes = route.points.collect{|point| point.altitude}%>
-            <label class="col-sm-2 control-label">Altitude:</label>
-            <div class="col-sm-10">
-              <p class="form-control-static"> <%= [altitudes.min, altitudes.max].join('m - ') %>m</p>
+            <label class="col-md-2 control-label" style="min-width: 190px"><%= t '.altitude' %></label>
+            <div>
+              <% altitudes = route.points.collect{|point| point.altitude}%>
+              <p class="form-control-static"><%= t '.altitude_message', min: altitudes.min, max: altitudes.max %></p>
             </div>
-            <label class="col-sm-2 control-label">Days:</label>
-            <div class="col-sm-10">
-              <p class="form-control-static"> <%= route.length %></p>
+            <label class="col-md-2 control-label" style="min-width: 190px"><%= t '.days' %></label>
+            <div>
+              <p class="form-control-static"><%= route.length %></p>
             </div>
-            <label class="col-sm-2 control-label">Hours per day:</label>
-            <div class="col-sm-10">
+            <label class="col-md-2 control-label"style="min-width: 190px"><%= t '.hours' %></label>
+            <div>
               <% hours = route.avg_hours %>
-              <p class="form-control-static"> <%= hours.floor %>h <%= ((hours - hours.floor) * 60).floor  %>min</p>
+              <p class="form-control-static"> <%= t '.hours_message', hours: hours.floor, min: ((hours - hours.floor) * 60).floor  %></p>
             </div>
           </div>
         </form>
 
         <div class="btn btn-link" role="button" data-toggle="collapse" href=<%= "#description-well" + i.to_s %> aria-expanded="false" aria-controls=<%= "description-well" + i.to_s %> >
-          Description <span class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span>
+          <%= t '.description' %> <span class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span>
         </div>
         <div class="collapse" id=<%= "description-well" + i.to_s %> >
           <div class="well">

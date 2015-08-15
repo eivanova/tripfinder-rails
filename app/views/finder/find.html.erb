@@ -1,20 +1,20 @@
 <form class="form-inline full-width" accept-charset="UTF-8" action="find" method="post">
   <div class="form-group">
-    <label for="days_num">Number of days:</label>
-    <input name="days" value="<%= @parameters[:days] %>" type="number" class="form-control" id="days_num" min="1" max="20" placeholder="How long is your vacation?">
+    <label for="days_num"><%= t '.days' %></label>
+    <input name="days" value="<%= @parameters[:days] %>" type="number" class="form-control" id="days_num" min="1" max="20" placeholder="<%= t '.days_placeholder' %>">
   </div>
   <div class="form-group">
-    <label for="avg_hours">Hours per day:</label>
-    <input name="hours" value="<%= @parameters[:hours] %>" type="number" class="form-control" id="avg_hours" min="1" max="20" placeholder="Be brave!">
+    <label for="avg_hours"><%= t '.hours' %></label>
+    <input name="hours" value="<%= @parameters[:hours] %>" type="number" class="form-control" id="avg_hours" min="1" max="20" placeholder="<%= t '.hours_placeholder' %>">
   </div>
   <div class="form-group">
-    <label for="cyclic" >Cyclic route:</label>
+    <label for="cyclic" ><%= t '.cyclic' %></label>
     <input name="cyclic" <%= "checked" if @parameters[:cyclic] %> id="cyclic" class="form-control" type="checkbox">
   </div>
   <div class="form-group">
-    <label for="difficulty" >Difficulty:</label>
+    <label for="difficulty" ><%= t '.difficulty' %></label>
     <select name="difficulty" id="difficulty" class="form-control">
-      <option value="">Any</option>
+      <option value=""><%= t '.any' %></option>
       <option value="1" <%= "selected" if @parameters[:difficulty] == "1" %> > 1 </option>
       <option value="3" <%= "selected" if @parameters[:difficulty] == "3" %> > 2 </option>
       <option value="6" <%= "selected" if @parameters[:difficulty] == "6" %> > 3 </option>
@@ -23,11 +23,11 @@
     </select>
   </div>
   <div class="form-group">
-    <label for="destination">Destination:</label>
-    <input name="location" value="<%= @parameters[:location]  %>" type="text" class="form-control" id="destination" placeholder="Do you have one?">
+    <label for="destination"><%= t '.destination' %></label>
+    <input name="location" value="<%= @parameters[:location]  %>" type="text" class="form-control" id="destination" placeholder="<%= t '.destination' %>">
   </div>
   <div class="form-group">
-  <button type="submit" class="btn btn-default">Find</button>
+    <button type="submit" class="btn btn-default"><%= t '.find' %></button>
   </div>
 </form>
 

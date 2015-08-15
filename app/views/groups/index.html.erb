@@ -1,7 +1,7 @@
 <div class="container row">
   <ul class="list-group col-md-4">
     <li class="list-group-item disabled">
-      Groups
+    <%= t '.groups' %>
       <%= link_to raw("<span class=\"glyphicon glyphicon-plus\"></span> "), new_group_path, :remote=>true, class: "pull-right" %>
     </li>
     <% @groups.each do |group| %>
@@ -12,9 +12,9 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" aria-labelledby="group-actions">
-            <li><%= link_to "Simillar", 'groups/' + group.id.to_s + '/similar', :remote=>true, class: "group-action", :id=>"similar-group-action" %></li>
-            <li><%= link_to "Edit", edit_group_path(group), :remote=>true, class: "group-action" %></li>
-            <li><%= link_to "Delete", 'groups/' + group.id.to_s, :method=>:delete, :remote=>true, class: "group-action" %></li>
+            <li><%= link_to t('.similar'), 'groups/' + group.id.to_s + '/similar', :remote=>true, class: "group-action", :id=>"similar-group-action" %></li>
+            <li><%= link_to t('.edit'), edit_group_path(group), :remote=>true, class: "group-action" %></li>
+            <li><%= link_to t('.delete'), 'groups/' + group.id.to_s, :method=>:delete, :remote=>true, class: "group-action" %></li>
           </ul>
         </div>
       </li>

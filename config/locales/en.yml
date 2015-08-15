@@ -20,4 +20,70 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  home:
+    index:
+      title: "Find my trip!"
+      days: "Number of days: "
+      hours: "Hours per day: "
+      cyclic: "Cyclic route: "
+      difficulty: "Difficulty: "
+      days_placeholder: "How long is your vacation?"
+      hours_placeholder: "How long will a day be?"
+      destination: "Destination: "
+      destination_placeholder: "Where do you want to go?"
+      find: "Find"
+      any: "Any"
+  finder:
+    routes:
+      altitude: "Altitude: "
+      days: "Days: "
+      hours: "Hours per day: "
+    find:
+      days: "Number of days: "
+      hours: "Hours per day: "
+      cyclic: "Cyclic route: "
+      difficulty: "Difficulty: "
+      days_placeholder: "How long is your vacation?"
+      hours_placeholder: "How long will a day be?"
+      destination: "Destination: "
+      destination_placeholder: "Where do you want to go?"
+      find: "Find"
+      any: "Any"
+  groups:
+    group_details:
+      create: "Create new group"
+      edit: "Edit group %{name}"
+      name: "Name: "
+      description: "Description: "
+      save: "Save"
+    index:
+      groups: "Groups"
+      similar: "Similar"
+      edit: "Edit"
+      delete: "Delete"
+  layouts:
+    application:
+      search: "Search"
+      chat: "Chat with Ginie"
+      explore: "Explore"
+      about: "About"
+      details: "Details"
+      logout: "Logout"
+      login: "Login"
+  user_sessions:
+    new:
+      login: "Login"
+      email: "Email address:"
+      password: "Password: "
+      register: "Register"
+  users:
+    details:
+      details: "Details"
+      register: "Register"
+      error: "Couldn't save user"
+      email: "Email address: "
+      password: "Password: "
+      confirm: "Confirm password: "
+      login: "Login"
+    show:
+      edit: "Edit user"
