@@ -72,22 +72,28 @@ bg:
       explore: "Изследовател"
       about: "За мен"
       details: "Детайли"
-      logout: "Логоут"
-      login: "Логин"
+      logout: "Изход"
+      login: "Вход"
   user_sessions:
     new:
-      login: "Логин"
+      login: "Вход"
       email: "Имейл адрес:"
       password: "Парола: "
-      register: "Регистриране"
+      register: "Регистрация"
   users:
     details:
-      details: "детайли"
+      details: "Детайли"
       register: "Регистриране"
       error: "Неуспешно запазване на потребителя"
       email: "Имейл адрес: "
       password: "Парола: "
       confirm: "Потвърди паролата: "
-      login: "Логин"
+      login: "Вход"
     show:
       edit: "Промяна на детайлите"
+  recommender:
+    similar_to_group:
+      title: "Подобни маршрути на група \"%{name}\""
+  grouped_route:
+    show_routes:
+      title: "Маршрути в група \"%{name}\""

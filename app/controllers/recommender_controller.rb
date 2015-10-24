@@ -18,7 +18,7 @@ class RecommenderController < ApplicationController
     end
 
     @routes = @routes - group_routes
-    @title = "Подобни маршрути за група " + group.name
+    @title = t ".title", name: group.name
 
     respond_to do |format|
       format.js { render  "/grouped_route/show_routes" }

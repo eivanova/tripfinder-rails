@@ -87,3 +87,9 @@ en:
       login: "Login"
     show:
       edit: "Edit user"
+  recommender:
+    similar_to_group:
+      title: "Routes similar to group \"%{name}\""
+  grouped_route:
+    show_routes:
+      title: "Routes in group \"%{name}\""
