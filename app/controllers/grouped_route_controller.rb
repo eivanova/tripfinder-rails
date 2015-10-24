@@ -4,6 +4,8 @@ class GroupedRouteController < ApplicationController
   def show_routes
     params.require(:group)
     @routes = GroupedRoute.where(group: params[:group]).collect { |grouped_route| route_from_json(grouped_route.route) }
+    group = Group.find_by(id: params[:group])
+    @title = "Маршрути в група " + group.name
 
     respond_to do |format|
       format.js { render :show_routes }

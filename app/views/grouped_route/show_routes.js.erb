@@ -1,3 +1,5 @@
-$("#routes-per-group").html("<%=escape_javascript(render :partial => "finder/routes")%>");
+var html = "<h3><%=@title %></h3>" + "<%=escape_javascript(render :partial => "finder/routes")%>";
+
+$("#routes-per-group").html(html);
 
 $('.groups-button').click(app.ready());
